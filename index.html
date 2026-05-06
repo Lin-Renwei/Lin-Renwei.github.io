@@ -3,72 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>旅行纪律记录</title>
+  <title>我的旅行记录</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <main class="app-shell">
-    <section class="topbar">
-      <div>
-        <p class="eyebrow">Travel Log</p>
-        <h1>旅行纪律记录</h1>
+  <main class="app">
+    <section class="screen active" id="tripScreen">
+      <div class="hero">
+        <div class="hero-text">
+          <p>Travel Notes</p>
+          <h1>我的旅行记录</h1>
+          <span>选择一次旅程，进入地点列表</span>
+        </div>
       </div>
-      <button class="primary-button" id="addNodeTop" type="button">+ 新增节点</button>
+      <div class="card-row" id="tripCards"></div>
     </section>
 
-    <section class="summary-grid" aria-label="旅行统计">
-      <div class="summary-item">
-        <span class="summary-label">行程节点</span>
-        <strong id="totalTrips">0</strong>
+    <section class="screen" id="placeScreen">
+      <button class="back-button" id="backToTrips" type="button">返回</button>
+      <div class="page-title">
+        <p id="placeDates"></p>
+        <h2 id="placeTripTitle"></h2>
+        <span>选择一个地点查看当地游玩内容</span>
       </div>
-      <div class="summary-item">
-        <span class="summary-label">已完成</span>
-        <strong id="doneTrips">0</strong>
-      </div>
-      <div class="summary-item">
-        <span class="summary-label">最近目的地</span>
-        <strong id="latestPlace">暂无</strong>
-      </div>
+      <div class="card-row" id="placeCards"></div>
     </section>
 
-    <section class="composer" aria-label="新增行程">
-      <div class="field-row">
-        <label>
-          行程名称
-          <input id="tripTitle" type="text" placeholder="例如：杭州两日游">
-        </label>
-        <label>
-          日期
-          <input id="tripDate" type="date">
-        </label>
+    <section class="screen" id="nodeScreen">
+      <button class="back-button" id="backToPlaces" type="button">返回</button>
+      <div class="page-title">
+        <p id="nodeTripTitle"></p>
+        <h2 id="nodePlaceTitle"></h2>
+        <span id="nodePlaceSummary"></span>
       </div>
-      <div class="field-row">
-        <label>
-          地点
-          <input id="tripPlace" type="text" placeholder="例如：西湖、灵隐寺">
-        </label>
-        <label>
-          状态
-          <select id="tripStatus">
-            <option value="planned">计划中</option>
-            <option value="done">已完成</option>
-            <option value="memory">值得回味</option>
-          </select>
-        </label>
-      </div>
-      <label>
-        纪律 / 备注
-        <textarea id="tripNote" rows="3" placeholder="记录预算、路线、打卡点、感受、下次要注意的事..."></textarea>
-      </label>
-      <button class="primary-button wide" id="addTrip" type="button">添加行程节点</button>
-    </section>
-
-    <section class="timeline-section">
-      <div class="section-head">
-        <h2>行程时间轴</h2>
-        <button class="ghost-button" id="clearAll" type="button">清空记录</button>
-      </div>
-      <div class="timeline" id="timeline" aria-live="polite"></div>
+      <section class="photo-section">
+        <div class="photo-head">
+          <h3>当地图片</h3>
+          <label class="upload-button">
+            上传图片
+            <input id="photoInput" type="file" accept="image/*" multiple>
+          </label>
+        </div>
+        <div class="photo-grid" id="photoGrid"></div>
+      </section>
+      <div class="node-list" id="nodeList"></div>
     </section>
   </main>
 
